@@ -1,6 +1,8 @@
-# A C(++) University Assignment
+# A C++ University Assignment in C
 
 A C++ university assignment, paraphrased by The Cherno in the video [*I did a C++ University Assignment*](https://www.youtube.com/watch?v=kQsHF7C-FUY&ab_channel=TheCherno), and (hopefully) solved by me in C.
+
+Why? It's healthy to write something in C once in a while, but I don't do it very often. It's a bit like jogging in that respect. Today just happened to be the day I felt like going jogging I guess.
 
 ## The assignment
 
