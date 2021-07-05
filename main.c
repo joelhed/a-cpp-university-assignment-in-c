@@ -80,6 +80,12 @@ void ht_insert(HashTable *table, char *key) {
 
 void ht_delete(HashTable *table, char *key) {
     printf("ht_delete %s\n", key);
+    int hash = ht_search(table, key);
+    if (hash == -1) {
+        return;
+    }
+    table->slots[hash].status = TOMBSTONE;
+    /* We don't need to change the key to something else. */
 }
 
 void ht_print(HashTable *table) {
