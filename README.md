@@ -24,8 +24,7 @@ A C++ university assignment, paraphrased by The Cherno in the video [*I did a C+
 - Insertion works as follows:
   - First perform search to see if key exists - if it does, do nothing
   - Take the last character of key as hash value
-  - If that slot is not cooupied ("never used" or "tombstone"), put the key there and
-      occupy the slot
+  - If that slot is not occupied ("never used" or "tombstone"), put the key there and occupy the slot
   - If it's occupied, try the next slot until you find a free slot
 - Deletion works as follows:
   - Given a key, search for it to locate its slot (if it doesn't exist do nothing)
