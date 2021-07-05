@@ -34,14 +34,38 @@ void ht_init(HashTable *table) {
     memset(table, 0, sizeof(HashTable));
 }
 
+int hash_key(char *key) {
+    return (int) key[strlen(key)-1] - 'a';
+}
+
 /* Returns an integer representing the slot index if found, -1 otherwise. */
 int ht_search(HashTable *table, char *key) {
     printf("ht_search\n");
+    int original_hash = hash_key(key);
+    int hash = original_hash;
+    for (;;) {
+        Slot slot = table->slots[hash];
+        if (slot.status == NEVER_USED) {
+            break;
+        } else if (slot.status == OCCUPIED && strncmp(key, slot.key, MAX_KEY_LENGTH) == 0) {
+            return hash;
+        } else { /* Either the status is tombstone or the keys aren't equal */
+            hash = (hash + 1) % NUM_SLOTS;
+            /* Check whether we've wrapped around the entire table */
+            if (hash == original_hash) {
+                break;
+            }
+        }
+    }
+
     return -1;
 }
 
 void ht_insert(HashTable *table, char *key) {
     printf("ht_insert %s\n", key);
+    Slot *slot = &(table->slots[hash_key(key)]);
+    slot->status = OCCUPIED;
+    strncpy(slot->key, key, MAX_KEY_LENGTH);
 }
 
 void ht_delete(HashTable *table, char *key) {
@@ -86,6 +110,7 @@ int main(int argc, char *argv[]) {
                 break;
             /* No default, because we should ignore invalid inputs. */
         }
+        ht_print_debug(&table);
     }
 
     ht_print(&table);
