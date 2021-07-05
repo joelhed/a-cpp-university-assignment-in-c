@@ -30,7 +30,7 @@ typedef struct HashTable {
 
 
 void ht_init(HashTable *table) {
-    printf("ht_init\n");
+    /*printf("ht_init\n");*/
     memset(table, 0, sizeof(HashTable));
 }
 
@@ -40,7 +40,7 @@ int hash_key(char *key) {
 
 /* Returns an integer representing the slot index if found, -1 otherwise. */
 int ht_search(HashTable *table, char *key) {
-    printf("ht_search\n");
+    /*printf("ht_search\n");*/
     int original_hash = hash_key(key);
     int hash = original_hash;
     for (;;) {
@@ -62,7 +62,7 @@ int ht_search(HashTable *table, char *key) {
 }
 
 void ht_insert(HashTable *table, char *key) {
-    printf("ht_insert %s\n", key);
+    /*printf("ht_insert %s\n", key);*/
     int hash = ht_search(table, key);
     if (hash != -1) {
         return;
@@ -79,7 +79,7 @@ void ht_insert(HashTable *table, char *key) {
 }
 
 void ht_delete(HashTable *table, char *key) {
-    printf("ht_delete %s\n", key);
+    /*printf("ht_delete %s\n", key);*/
     int hash = ht_search(table, key);
     if (hash == -1) {
         return;
@@ -89,7 +89,7 @@ void ht_delete(HashTable *table, char *key) {
 }
 
 void ht_print(HashTable *table) {
-    printf("ht_print\n");
+    /*printf("ht_print\n");*/
     for (int i = 0; i < NUM_SLOTS; i++) {
         Slot slot = table->slots[i];
         if (slot.status == OCCUPIED) {
@@ -100,7 +100,7 @@ void ht_print(HashTable *table) {
 }
 
 void ht_print_debug(HashTable *table) {
-    printf("ht_print_debug\n");
+    /*printf("ht_print_debug\n");*/
     for (int i = 0; i < NUM_SLOTS; i++) {
         Slot slot = table->slots[i];
         printf("%c: %s: %s\n", 'a' + i, STATUS_STRINGS[slot.status], slot.key);
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
     HashTable table;
 
     ht_init(&table);
-    ht_print_debug(&table);
+    /*ht_print_debug(&table);*/
 
     /* Input processing */
 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]) {
                 break;
             /* No default, because we should ignore invalid inputs. */
         }
-        ht_print_debug(&table);
+        /*ht_print_debug(&table);*/
     }
 
     ht_print(&table);
