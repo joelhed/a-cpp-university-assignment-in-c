@@ -90,6 +90,13 @@ void ht_delete(HashTable *table, char *key) {
 
 void ht_print(HashTable *table) {
     printf("ht_print\n");
+    for (int i = 0; i < NUM_SLOTS; i++) {
+        Slot slot = table->slots[i];
+        if (slot.status == OCCUPIED) {
+            printf("%s ", slot.key);
+        }
+    }
+    printf("\n");
 }
 
 void ht_print_debug(HashTable *table) {
