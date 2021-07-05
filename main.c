@@ -80,7 +80,7 @@ void ht_print_debug(HashTable *table) {
     printf("ht_print_debug\n");
     for (int i = 0; i < NUM_SLOTS; i++) {
         Slot slot = table->slots[i];
-        printf("%d: %s: %s\n", i, STATUS_STRINGS[slot.status], slot.key);
+        printf("%c: %s: %s\n", 'a' + i, STATUS_STRINGS[slot.status], slot.key);
     }
 }
 
