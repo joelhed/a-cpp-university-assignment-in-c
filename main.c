@@ -63,7 +63,17 @@ int ht_search(HashTable *table, char *key) {
 
 void ht_insert(HashTable *table, char *key) {
     printf("ht_insert %s\n", key);
-    Slot *slot = &(table->slots[hash_key(key)]);
+    int hash = ht_search(table, key);
+    if (hash != -1) {
+        return;
+    }
+
+    hash = hash_key(key);
+    while (table->slots[hash].status == OCCUPIED) {
+        hash = (hash + 1) % NUM_SLOTS;
+    }
+
+    Slot *slot = &(table->slots[hash]);
     slot->status = OCCUPIED;
     strncpy(slot->key, key, MAX_KEY_LENGTH);
 }
