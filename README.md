@@ -36,10 +36,11 @@ A C++ university assignment, paraphrased by The Cherno in the video [*I did a C+
     - eg. `Aapple` means insert key "apple" into hash table
   - **DWord** - (character **D** followed by word as above)
     - eg. `Dapple` means delete key "apple" from hash table
-- Once input is processed, output is all the slots in the hash table that have
-    "occupied" values, separated by spaces
+- Once input is processed, output is all the slots in the hash table that have "occupied" values, separated by spaces
 - Ignore invalid inputs
+
   Sample input: Aapple Aorange Dapple Astrawberry
+
   Sample output: orange strawberry
 
 - Submit via SVN
