@@ -131,6 +131,9 @@ int main(int argc, char *argv[]) {
             case 'D':
                 ht_delete(&table, key);
                 break;
+            case 'P':
+                ht_print_debug(&table);
+                break;
             /* No default, because we should ignore invalid inputs. */
         }
         /*ht_print_debug(&table);*/
